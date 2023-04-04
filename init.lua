@@ -27,6 +27,8 @@ return {
   },
 
   lsp = {
+    skip_setup = { "dartls" }, -- skip lsp setup because flutter-tools will do it itself
+
     -- customize lsp formatting options
     formatting = {
       -- control auto formatting on save

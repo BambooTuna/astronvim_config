@@ -11,7 +11,9 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -19,7 +21,54 @@ return {
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
+
+    -- quick move
+    ["<S-h>"] = { "0", desc = "Cursor to start" },
+    -- ["<S-j>"] = { "G", desc = "Cursor to bottom" },
+    -- ["<S-k>"] = { "gg", noremap = true, desc = "Cursor to top" },
+    ["<S-l>"] = { "$", desc = "Cursor to end" },
+
+    -- limit
+    ["<Left>"] = { "<Nop>" },
+    ["<Down>"] = { "<Nop>" },
+    ["<Up>"] = { "<Nop>" },
+    ["<Right>"] = { "<Nop>" },
+    -- buffer
+    ["ah"] = {
+      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      desc = "To switch to the left buffer",
+    },
+    ["al"] = {
+      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      desc = "To switch to the right buffer",
+    },
+    -- editor
+    ["<S-j>"] = { "viw", desc = "Word selection" },
+  },
+  i = {
+    -- limit
+    ["<Left>"] = { "<Nop>" },
+    ["<Down>"] = { "<Nop>" },
+    ["<Up>"] = { "<Nop>" },
+    ["<Right>"] = { "<Nop>" },
+
+    ["<C-h>"] = { "<Left>" },
+    ["<C-j>"] = { "<Down>" },
+    ["<C-k>"] = { "<Up>" },
+    ["<C-l>"] = { "<Right>" },
+
+    -- copilot
+    ["<C-a>"] = { "copilot#Accept(<Tab>)", silent = true, expr = true, script = true },
+  },
+  v = {
+    -- quick move
+    ["<S-h>"] = { "0", desc = "Cursor to start" },
+    ["<S-l>"] = { "$", desc = "Cursor to end" },
+
+    -- move line
+    ["J"] = { ":move '>+1<CR>gv-gv", desc = "Move lines of code up" },
+    ["K"] = { ":move '<-2<CR>gv-gv", desc = "Move lines of code down" },
   },
   t = {
     -- setting a mapping to false will disable it
