@@ -10,7 +10,16 @@ return {
     after = "mason-lspconfig.nvim", -- make sure to load after mason-lspconfig
     config = function()
       require("flutter-tools").setup {
-        lsp = require("astronvim.utils.lsp").config "dartls", -- get the server settings and built in capabilities/on_attach
+        flutter_lookup_cmd = "asdf where flutter",
+        lsp = {
+          color = {
+            enabled = true,
+          },
+          settings = {
+            showTodos = true,
+            completeFunctionCalls = true,
+          },
+        },
       }
     end,
   },

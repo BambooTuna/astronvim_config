@@ -25,8 +25,6 @@ return {
 
     -- quick move
     ["<S-h>"] = { "0", desc = "Cursor to start" },
-    -- ["<S-j>"] = { "G", desc = "Cursor to bottom" },
-    -- ["<S-k>"] = { "gg", noremap = true, desc = "Cursor to top" },
     ["<S-l>"] = { "$", desc = "Cursor to end" },
 
     -- limit
@@ -34,16 +32,24 @@ return {
     ["<Down>"] = { "<Nop>" },
     ["<Up>"] = { "<Nop>" },
     ["<Right>"] = { "<Nop>" },
+
     -- buffer
-    ["ah"] = {
+    ["<A-h>"] = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "To switch to the left buffer",
     },
-    ["al"] = {
+    ["<A-l>"] = {
       function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "To switch to the right buffer",
     },
+
     -- editor
+    ["d"] = { '"_d' },
+    ["dd"] = { '"_dd' },
+    ["D"] = { '"_D' },
+    ["x"] = { '"_x' },
+    ["s"] = { '"_s' },
+
     ["<S-j>"] = { "viw", desc = "Word selection" },
   },
   i = {
@@ -60,8 +66,18 @@ return {
 
     -- copilot
     ["<C-a>"] = { "copilot#Accept(<Tab>)", silent = true, expr = true, script = true },
+
+    -- editor
+    ["<C-v>"] = { "<C-><C-O>P", desc = "Paste" },
   },
   v = {
+    -- editor
+    ["d"] = { '"_d' },
+    ["dd"] = { '"_dd' },
+    ["D"] = { '"_D' },
+    ["x"] = { '"_x' },
+    ["s"] = { '"_s' },
+
     -- quick move
     ["<S-h>"] = { "0", desc = "Cursor to start" },
     ["<S-l>"] = { "$", desc = "Cursor to end" },
