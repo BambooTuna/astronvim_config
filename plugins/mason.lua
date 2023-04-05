@@ -21,7 +21,7 @@ return {
     opts = {
       ensure_installed = {
         -- Formatters
-        "prettierd",
+        "prettier",
         "yamlfmt",
 
         -- Linter
