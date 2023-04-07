@@ -1,7 +1,8 @@
 return {
   {
     "junegunn/fzf",
-    config = function() require("fzf").install() end,
+    cmd = "FZF",
+    config = function() require("fzf_lib").install() end,
   },
   {
     "github/copilot.vim",
