@@ -1,5 +1,9 @@
 return {
   {
+    "junegunn/fzf",
+    run = "./install --all",
+  },
+  {
     "github/copilot.vim",
     cmd = "Copilot",
     event = "InsertEnter",
