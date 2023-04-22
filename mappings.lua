@@ -64,9 +64,6 @@ return {
     ["<C-k>"] = { "<Up>" },
     ["<C-l>"] = { "<Right>" },
 
-    -- copilot
-    ["<C-a>"] = { "copilot#Accept(<Tab>)", silent = true, expr = true, script = true },
-
     -- editor
     ["<C-v>"] = { "<C-><C-O>P", desc = "Paste" },
   },

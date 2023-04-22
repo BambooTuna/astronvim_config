@@ -8,7 +8,22 @@ return {
     "github/copilot.vim",
     cmd = "Copilot",
     event = "InsertEnter",
-    config = function() vim.g.copilot_no_tab_map = true end,
+    config = function()
+      vim.g.copilot_no_tab_map = true
+
+      local keymap = vim.keymap.set
+      -- https://github.com/orgs/community/discussions/29817#discussioncomment-4217615
+      keymap(
+        "i",
+        "<C-a>",
+        'copilot#Accept("<CR>")',
+        { silent = true, expr = true, script = true, replace_keycodes = false }
+      )
+      keymap("i", "<C-]>", "<Plug>(copilot-next)")
+      keymap("i", "<C-[>", "<Plug>(copilot-previous)")
+      -- keymap("i", "<C-d>", "<Plug>(copilot-dismiss)")
+      keymap("i", "<C-s>", "<Plug>(copilot-suggest)")
+    end,
   },
   {
     "akinsho/flutter-tools.nvim",

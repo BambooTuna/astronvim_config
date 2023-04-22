@@ -23,10 +23,12 @@ return {
         -- Formatters
         "prettier",
         "yamlfmt",
+        "black",
 
         -- Linter
         "mypy",
         "eslint_d",
+        "flake8",
       },
       automatic_installation = true,
       automatic_setup = false,
