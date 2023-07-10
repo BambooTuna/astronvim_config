@@ -44,17 +44,34 @@ return {
       },
       timeout_ms = 1000, -- default format timeout
       filter = function(client) -- fully override the default formatting function
-        if vim.bo.filetype == "typescript" then
-          return client.name == "null-ls" or client.name == "tsserver"
-        end
+        if vim.bo.filetype == "typescript" then return client.name == "null-ls" or client.name == "tsserver" end
 
         -- enable all other clients
         return true
-      end
+      end,
     },
     -- enable servers that you already have installed without mason
     servers = {
       "dartls",
+    },
+    setup_handlers = {
+      tsserver = function(_, opts) require("typescript").setup { server = opts } end,
+      denols = function(_, opts) require("deno-nvim").setup { server = opts } end,
+    },
+    config = {
+      -- Since both tsserver and denols (and others such as eslint and prettier) attach to TypeScript/JavaScript files, some extra configuration may be required if both are installed.
+      denols = function(opts)
+        opts.root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
+        return opts
+      end,
+      tsserver = function(opts)
+        opts.root_dir = require("lspconfig.util").root_pattern "package.json"
+        return opts
+      end,
+      eslint = function(opts)
+        opts.root_dir = require("lspconfig.util").root_pattern("package.json", ".eslintrc.json", ".eslintrc.js")
+        return opts
+      end,
     },
   },
 
