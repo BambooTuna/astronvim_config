@@ -3,7 +3,7 @@ return {
   updater = {
     remote = "origin", -- remote to use
     channel = "stable", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    version = "v3.14.0", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "nightly", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
     pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
@@ -44,7 +44,7 @@ return {
       },
       timeout_ms = 1000, -- default format timeout
       filter = function(client) -- fully override the default formatting function
-        if vim.bo.filetype == "typescript" then return client.name == "null-ls" or client.name == "tsserver" end
+        -- if vim.bo.filetype == "typescript" then return client.name == "null-ls" or client.name == "tsserver" end
 
         -- enable all other clients
         return true
