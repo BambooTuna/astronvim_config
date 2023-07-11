@@ -73,6 +73,14 @@ return {
             end,
           })
           require("null-ls").register(require("null-ls").builtins.diagnostics.eslint_d.with {
+            method = require("null-ls").methods.DIAGNOSTICS_ON_SAVE,
+            diagnostic_config = {
+                underline = true,
+                virtual_text = false,
+                signs = true,
+                update_in_insert = false,
+                severity_sort = true,
+            },
             condition = function(utils)
               return utils.root_has_file "package.json"
                 or utils.root_has_file ".eslintrc"
@@ -85,9 +93,9 @@ return {
           })
         end,
         -- For black:
-        black = function() require("null-ls").register(require("null-ls").builtins.formatting.black) end,
+        -- black = function() require("null-ls").register(require("null-ls").builtins.formatting.black) end,
         -- For flake8:
-        flake8 = function() require("null-ls").register(require("null-ls").builtins.diagnostics.flake8) end,
+        -- flake8 = function() require("null-ls").register(require("null-ls").builtins.diagnostics.flake8) end,
       },
     },
   },
