@@ -53,6 +53,7 @@ return {
     ["<S-j>"] = { "viw", desc = "Word selection" },
   },
   i = {
+    ["jj"] = { "<esc>" },
     -- limit
     ["<Left>"] = { "<Nop>" },
     ["<Down>"] = { "<Nop>" },

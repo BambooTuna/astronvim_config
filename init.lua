@@ -43,7 +43,7 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- "sumneko_lua",
       },
-      timeout_ms = 1000, -- default format timeout
+      timeout_ms = 10000, -- default format timeout
       filter = function(client) -- fully override the default formatting function
         -- if vim.bo.filetype == "typescript" then return client.name == "null-ls" or client.name == "tsserver" end
 

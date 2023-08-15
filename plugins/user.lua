@@ -7,8 +7,9 @@ return {
   {
     "github/copilot.vim",
     cmd = "Copilot",
-    event = "InsertEnter",
+    event = "BufRead",
     config = function()
+      vim.b.copilot_enabled = true
       vim.g.copilot_no_tab_map = true
 
       local keymap = vim.keymap.set
@@ -23,6 +24,12 @@ return {
       keymap("i", "<C-[>", "<Plug>(copilot-previous)")
       -- keymap("i", "<C-d>", "<Plug>(copilot-dismiss)")
       keymap("i", "<C-s>", "<Plug>(copilot-suggest)")
+      
+      -- Disable Copilot for large files
+      vim.cmd([[
+        autocmd BufReadPre * 
+        lua if vim.fn.getfsize(vim.fn.expand("<afile>")) > 100000 or vim.fn.getfsize(vim.fn.expand("<afile>")) == -2 then vim.b.copilot_enabled = false end
+      ]])
     end,
   },
   {
