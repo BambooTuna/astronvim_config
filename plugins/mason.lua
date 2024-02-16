@@ -11,6 +11,7 @@ return {
         "tsserver",
         "gopls",
         "terraformls",
+        "prismals",
       },
     },
   },
@@ -25,6 +26,7 @@ return {
         -- "prettierd",
         "yamlfmt",
         "black",
+        "terraform_fmt",
 
         -- Linter
         "mypy",
@@ -85,6 +87,8 @@ return {
         black = function() require("null-ls").register(require("null-ls").builtins.formatting.black) end,
         -- For flake8:
         flake8 = function() require("null-ls").register(require("null-ls").builtins.diagnostics.flake8) end,
+        -- For terraform_fmt:
+        terraform_fmt = function() require("null-ls").register(require("null-ls").builtins.formatting.terraform_fmt) end,
       },
     },
   },

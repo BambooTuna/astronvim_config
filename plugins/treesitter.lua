@@ -21,6 +21,10 @@ return {
 
       "go",
       "dart",
+      
+      "terraform",
+
+      "prisma",
     },
     indent = {
       enable = true,
